@@ -1,0 +1,29 @@
+<?php
+ // module/Album/view/album/album/edit.phtml:
+
+ $title = 'Edit Employee';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <?php
+ $form = $this->form;
+ $form->setAttribute('action', $this->url(
+     'admin',
+     array(
+         'action' => 'edit',
+         'id'     => $this->id,
+     )
+ ));
+ $form->prepare();
+?>
+ 	<?php echo $this->form()->openTag($form);?> 
+ 	<?php echo $this->formHidden($form->get('id'));?> 
+ 	<?php echo $this->formHidden($form->get('email_id'));?>
+ 	<?php echo $this->formHidden($form->get('status'));?> 
+ 	<?php echo $this->formRow($form->get('first_name'));?> <br/>
+ 	<?php echo $this->formRow($form->get('last_name'));?> <br/>
+ 	<?php echo $this->formRow($form->get('phone_no'));?> <br/>
+ 	<?php echo $this->formSubmit($form->get('submit'));?>
+ 
+ <?php echo $this->form()->closeTag();?>

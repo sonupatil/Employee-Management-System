@@ -1,0 +1,42 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Employees';
+$this->headTitle($title);
+?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('admin', array('action'=>'add'));?>">Add new Employee</a>
+     <a href="<?php echo $this->url('admin', array('action'=>'multidelete'));?>">Delete Multiple Employees</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>First Name</th>
+     <th>Last Name</th>
+     <th>Email Id</th>
+     <th>Phone No</th>
+     <th>Is Active</th>
+     
+     <th>&nbsp;</th>
+ </tr>
+ 
+ <?php
+ foreach ($employees as $employee) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($employee->first_name);?></td>
+     <td><?php echo $this->escapeHtml($employee->last_name);?></td>
+     <td><?php echo $this->escapeHtml($employee->email_id);?></td>
+     <td><?php echo $this->escapeHtml($employee->phone_no);?></td>
+     <td><?php echo $this->escapeHtml($employee->status);?></td>
+     <td>
+         <a href="<?php echo $this->url('admin',
+             array('action'=>'edit', 'id' => $employee->id));?>">Edit</a>
+         <a href="<?php echo $this->url('admin',
+             array('action'=>'delete', 'id' => $employee->id));?>">Delete</a>
+         <a href="<?php echo $this->url('admin',
+             array('action'=>'addDocuments', 'id' => $employee->id));?>">Add Documents</a>    
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
